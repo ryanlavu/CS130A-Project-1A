@@ -103,3 +103,13 @@ void indexOfQuery(String query) {
 	}
 
 }
+
+void printSlot(int slotIndex) {
+
+	for(int i = 0; i < table[slotIndex].size(); i++) {
+	
+		cout << table[slotIndex][i] << endl;
+
+	}
+
+}

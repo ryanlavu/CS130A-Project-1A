@@ -14,7 +14,7 @@ int main(int argc, char* argv[])
 
 	string fileName;
 	vector<string> wordVector;
-	vecotr<int> intVector;
+	int intVector[p];
 	string word;
 	bool trueOrFalse = true;
 	fileName += argv[1];
@@ -22,7 +22,7 @@ int main(int argc, char* argv[])
 	wordBase.open(fileName);
 	if(wordBase >> word)
 	{
-		intVecotr.push_back(stringToInt(word));
+		intVecotr[0] = stringToInt(word);
 		wordVector.push_back(word);
 
 	}
@@ -45,7 +45,7 @@ int main(int argc, char* argv[])
 int stringToInt(String input) {
 	
 	int output;
-	int c = 44;
+	int c = 41;
 
 	for(int i = 0; i < input.length(); i++) {
 

@@ -17,7 +17,7 @@ int main(int argc, char* argv[])
 	int intArray[p] = {0};
 	string word;
 	bool trueOrFalse = true;
-	fileName += argv[1];
+	fileName = argv[1];
 
 	wordBase.open(fileName);
 	if(wordBase >> word)

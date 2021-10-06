@@ -117,3 +117,22 @@ void printSlot(int slotIndex) {
 	}
 
 }
+
+int * getCounts(int * intArray) {
+
+	int counts[21] = {0};
+
+	for(int i = 0, i < intArray.size(), i++) {
+
+		if(intArray[i] > 20) continue;
+		else {
+			
+			counts[inArray[i]]++;
+
+		}
+
+	}
+
+	return counts;
+
+}

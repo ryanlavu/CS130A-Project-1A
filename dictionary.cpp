@@ -2,8 +2,11 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <cmath>
 
 using namespace std;
+
+int p;
 
 int main(int argc, char* argv[])
 {
@@ -42,11 +45,11 @@ int main(int argc, char* argv[])
 int stringToInt(String input) {
 	
 	int output;
-	int p = 44;
+	int c = 44;
 
 	for(int i = 0; i < input.length(); i++) {
 
-		output += int(input.at(i)) % p;
+		output += (int(input.at(i)) * pow(c, i)) % p;
 
 	}
 

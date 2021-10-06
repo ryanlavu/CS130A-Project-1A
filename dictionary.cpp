@@ -78,3 +78,28 @@ void insert(String data) {
 	}
 
 }
+
+void indexOfQuery(String query) {
+
+	int index = stringToInt(query);
+
+	if(table[index]) {
+
+		for(int i = 0; i < table[index].size(); i++) {
+
+			if(table[index][i].compare(query) == 0) {
+
+				cout << index << ", " << i << endl;
+				return;
+
+			}
+			
+
+		}
+
+		cout << "-1, -1" << endl;
+		return
+
+	}
+
+}

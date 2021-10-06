@@ -7,6 +7,7 @@
 using namespace std;
 
 int p;
+int *table[];
 
 int main(int argc, char* argv[])
 {
@@ -54,5 +55,26 @@ int stringToInt(String input) {
 	}
 
 	return output;
+
+}
+
+void insert(String data) {
+
+	int index = stringToInt(data);
+
+	if(table[index]) {
+		
+		for(int i = 0; i < table[index].size(); i++) {
+
+			if(!table[index][i]) {
+
+				table[index][i] = data;
+				return;
+
+			}
+
+		}
+
+	}
 
 }

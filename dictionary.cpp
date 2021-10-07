@@ -83,9 +83,10 @@ void insert(String data) {
 
 }
 
-void indexOfQuery(String query) {
+String indexOfQuery(String query) {
 
 	int index = stringToInt(query);
+	String output;
 
 	if(table[index]) {
 
@@ -93,18 +94,16 @@ void indexOfQuery(String query) {
 
 			if(table[index][i].compare(query) == 0) {
 
-				cout << index << ", " << i << endl;
-				return;
+				return "exists at (" + index + "," + i + ").";
 
 			}
 			
 
 		}
 
-		cout << "-1, -1" << endl;
-		return
-
 	}
+
+	return "does not exist.";	
 
 }
 
@@ -112,9 +111,11 @@ void printSlot(int slotIndex) {
 
 	for(int i = 0; i < table[slotIndex].size(); i++) {
 	
-		cout << table[slotIndex][i] << endl;
+		cout << table[slotIndex][i] << " ";
 
 	}
+
+	cout << endl;
 
 }
 

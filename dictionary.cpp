@@ -58,10 +58,6 @@ int main(int argc, char *argv[])
 	
 }
 
-
-/*
-=======
->>>>>>> e29015ebf08ab7e6bc03b14dcfe50b1c970d575f
 int stringToInt(string input) {
 	
 	int output;
@@ -98,11 +94,7 @@ void insert(string data) {
 
 }
 
-<<<<<<< HEAD
 string indexOfQuery(string query) {
-=======
-string indexOfQuery(String query) {
->>>>>>> e29015ebf08ab7e6bc03b14dcfe50b1c970d575f
 
 	int index = stringToInt(query);
 	string output;
@@ -160,4 +152,3 @@ void printCounts(int * intArray) {
 	}
 
 }
-*/

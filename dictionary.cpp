@@ -7,6 +7,7 @@
 using namespace std;
 
 int p;
+int c;
 //int *table[];
 
 int main(int argc, char *argv[])
@@ -65,7 +66,6 @@ int main(int argc, char *argv[])
 int stringToInt(string input) {
 	
 	int output;
-	int c = 41;
 
 	for(int i = 0; i < input.length(); i++) {
 

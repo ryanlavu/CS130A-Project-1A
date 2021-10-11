@@ -17,15 +17,18 @@ int main(int argc, char *argv[])
 	vector<string> wordVector;
 	int intArray[p] = {0};
 	int totalWords = 0;
+	int unqiueWords = 0;
 	string word = "";
 	bool trueOrFalse = true;
 
+	//This is to read in the wordbase file and hash the words into a intArray, as wlel as counting how many unique words there are
 	if(wordBase)
 	{
 		//intArray[stringToInt(word)] = intArray[stringToInt(word)]+1;
 		getline(wordBase, word);
 		wordVector.push_back(word);
 		totalWords++;
+		unqiueWords++;
 		cout << word  << " if statement" << endl;
 	}
 	while(wordBase)
@@ -45,6 +48,7 @@ int main(int argc, char *argv[])
                 {
                         //intArray[stringToInt(word)] = intArray[stringToInt(word)]+1;
                         wordVector.push_back(word);
+			uniqueWords++;
                 }
                 trueOrFalse = true;
 

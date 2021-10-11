@@ -12,7 +12,7 @@ int c;
 
 int main(int argc, char *argv[])
 {
-	ifstream wordBase(argv[1]);
+	ifstream wordBase(argv[2]);
 
 	string fileName;
 	vector<string> wordVector;

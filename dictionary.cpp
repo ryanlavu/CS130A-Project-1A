@@ -58,7 +58,10 @@ int main(int argc, char *argv[])
 	
 }
 
+
 /*
+=======
+>>>>>>> e29015ebf08ab7e6bc03b14dcfe50b1c970d575f
 int stringToInt(string input) {
 	
 	int output;
@@ -95,10 +98,14 @@ void insert(string data) {
 
 }
 
+<<<<<<< HEAD
 string indexOfQuery(string query) {
+=======
+string indexOfQuery(String query) {
+>>>>>>> e29015ebf08ab7e6bc03b14dcfe50b1c970d575f
 
 	int index = stringToInt(query);
-	String output;
+	string output;
 
 	if(table[index]) {
 
@@ -131,22 +138,26 @@ void printSlot(int slotIndex) {
 
 }
 
-int * getCounts(int * intArray) {
+void printCounts(int * intArray) {
 
 	int counts[21] = {0};
 
-	for(int i = 0, i < intArray.size(), i++) {
+	for(int i = 0; i < intArray.size(); i++) {
 
 		if(intArray[i] > 20) continue;
 		else {
 			
-			counts[inArray[i]]++;
+			counts[intArray[i]]++;
 
 		}
 
 	}
 
-	return counts;
+	for(int i = 0; i < counts.size(); i++) {
+
+		cout << "x=" << i << " : b=" << counts[i] << endl;
+
+	}
 
 }
 */

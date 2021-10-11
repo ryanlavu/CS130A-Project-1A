@@ -47,7 +47,7 @@ int main(int argc, char* argv[])
 	wordBase.close();
 }
 
-int stringToInt(String input) {
+int stringToInt(string input) {
 	
 	int output;
 	int c = 41;
@@ -62,7 +62,7 @@ int stringToInt(String input) {
 
 }
 
-void insert(String data) {
+void insert(string data) {
 
 	int index = stringToInt(data);
 
@@ -83,10 +83,10 @@ void insert(String data) {
 
 }
 
-String indexOfQuery(String query) {
+string indexOfQuery(String query) {
 
 	int index = stringToInt(query);
-	String output;
+	string output;
 
 	if(table[index]) {
 
@@ -119,21 +119,25 @@ void printSlot(int slotIndex) {
 
 }
 
-int * getCounts(int * intArray) {
+void printCounts(int * intArray) {
 
 	int counts[21] = {0};
 
-	for(int i = 0, i < intArray.size(), i++) {
+	for(int i = 0; i < intArray.size(); i++) {
 
 		if(intArray[i] > 20) continue;
 		else {
 			
-			counts[inArray[i]]++;
+			counts[intArray[i]]++;
 
 		}
 
 	}
 
-	return counts;
+	for(int i = 0; i < counts.size(); i++) {
+
+		cout << "x=" << i << " : b=" << counts[i] << endl;
+
+	}
 
 }

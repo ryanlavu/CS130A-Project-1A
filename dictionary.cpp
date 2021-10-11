@@ -7,47 +7,59 @@
 using namespace std;
 
 int p;
-int *table[];
+//int *table[];
 
-int main(int argc, char* argv[])
+int main(int argc, char *argv[])
 {
-	ifstream wordBase;
+	ifstream wordBase(argv[1]);
 
 	string fileName;
 	vector<string> wordVector;
 	int intArray[p] = {0};
 	int totalWords = 0;
-	string word;
+	string word = "";
 	bool trueOrFalse = true;
-	fileName = argv[1];
 
-	wordBase.open(fileName);
-	if(wordBase >> word)
+	if(wordBase)
 	{
-		intArray[stringToInt(word)] = intArray[stringToInt(word)]+1;
+		//intArray[stringToInt(word)] = intArray[stringToInt(word)]+1;
+		getline(wordBase, word);
 		wordVector.push_back(word);
 		totalWords++;
+		cout << word  << " if statement" << endl;
 	}
-	while(wordBase >> word)
+	while(wordBase)
 	{
+		getline(wordBase, word);
+		if(word.empty())
+			break;
+
 		totalWords++;
-		for(int i = 0; i < wordVector.size(); i++)
-		{
-			if(wordVector[i] == word)
-				trueOrFalse = false;
-		}
-		if(trueOrFalse)
-		{
-			intArray[stringToInt(word)] = intArray[stringToInt(word)]+1;
-			wordVector.push_back(word);
-		}
-		trueOrFalse = true;
+
+                for(int i = 0; i < wordVector.size(); i++)
+                {
+                        if(wordVector[i] == word)
+                                trueOrFalse = false;
+                }
+                if(trueOrFalse)
+                {
+                        //intArray[stringToInt(word)] = intArray[stringToInt(word)]+1;
+                        wordVector.push_back(word);
+                }
+                trueOrFalse = true;
+
+		cout << word << " for loop" << endl;
 	}
 
 	wordBase.close();
+
+	
+	cout <<"This is the end!" << endl;
+	
 }
 
-int stringToInt(String input) {
+/*
+int stringToInt(string input) {
 	
 	int output;
 	int c = 41;
@@ -62,7 +74,7 @@ int stringToInt(String input) {
 
 }
 
-void insert(String data) {
+void insert(string data) {
 
 	int index = stringToInt(data);
 
@@ -83,7 +95,7 @@ void insert(String data) {
 
 }
 
-String indexOfQuery(String query) {
+string indexOfQuery(string query) {
 
 	int index = stringToInt(query);
 	String output;
@@ -137,3 +149,4 @@ int * getCounts(int * intArray) {
 	return counts;
 
 }
+*/

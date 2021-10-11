@@ -156,3 +156,23 @@ void printCounts(int * intArray) {
 	}
 
 }
+
+int getLargestSlotIndex(int * intArray) {
+
+	int max = intArray[0];
+	int indexMax = 0;
+
+	for(int i = 1; i < intArray.size(); i++) {
+
+		if(intArray[i] > max) {
+
+			max = intArray[i];
+			indexMax = i;
+
+		}
+
+	}
+
+	return indexMax;
+
+}

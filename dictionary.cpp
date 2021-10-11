@@ -8,7 +8,7 @@ using namespace std;
 
 int p;
 int c;
-//int *table[];
+string table[2][3] = {};
 
 int main(int argc, char *argv[])
 {
@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
 	vector<string> wordVector;
 	int intArray[p] = {0};
 	int totalWords = 0;
-	int unqiueWords = 0;
+	int uniqueWords = 0;
 	string word = "";
 	bool trueOrFalse = true;
 
@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
 		getline(wordBase, word);
 		wordVector.push_back(word);
 		totalWords++;
-		unqiueWords++;
+		uniqueWords++;
 		cout << word  << " if statement" << endl;
 	}
 	while(wordBase)
@@ -69,7 +69,7 @@ int stringToInt(string input) {
 
 	for(int i = 0; i < input.length(); i++) {
 
-		output += (int(input.at(i)) * pow(c, i)) % p;
+		output += (int(input.at(i)) * int(pow(c, i))) % p;
 
 	}
 
@@ -77,15 +77,15 @@ int stringToInt(string input) {
 
 }
 
-void insert(string data) {
+void insert(string data, int intArray[]) {
 
 	int index = stringToInt(data);
 
 	if(table[index]) {
 		
-		for(int i = 0; i < table[index].size(); i++) {
+		for(int i = 0; i < intArray[index]; i++) {
 
-			if(!table[index][i]) {
+			if(table[index][i] == "") {
 
 				table[index][i] = data;
 				return;
@@ -98,18 +98,21 @@ void insert(string data) {
 
 }
 
-string indexOfQuery(string query) {
+string indexOfQuery(string query, int intArray[]) {
 
 	int index = stringToInt(query);
-	string output;
+	string output = "does not exist";
 
 	if(table[index]) {
 
-		for(int i = 0; i < table[index].size(); i++) {
+		for(int i = 0; i < intArray[index]; i++) {
 
 			if(table[index][i].compare(query) == 0) {
 
-				return "exists at (" + index + "," + i + ").";
+				output = "exists at (" + index + string(",");
+				output += i;
+				output += ").";
+				return output;
 
 			}
 			
@@ -118,13 +121,13 @@ string indexOfQuery(string query) {
 
 	}
 
-	return "does not exist.";	
+	return output;	
 
 }
 
-void printSlot(int slotIndex) {
+void printSlot(int slotIndex, int intArray[]) {
 
-	for(int i = 0; i < table[slotIndex].size(); i++) {
+	for(int i = 0; i < intArray[slotIndex]; i++) {
 	
 		cout << table[slotIndex][i] << " ";
 
@@ -134,11 +137,11 @@ void printSlot(int slotIndex) {
 
 }
 
-void printCounts(int * intArray) {
+void printCounts(int intArray[], int arraySize) {
 
 	int counts[21] = {0};
 
-	for(int i = 0; i < intArray.size(); i++) {
+	for(int i = 0; i < 21; i++) {
 
 		if(intArray[i] > 20) continue;
 		else {
@@ -149,7 +152,7 @@ void printCounts(int * intArray) {
 
 	}
 
-	for(int i = 0; i < counts.size(); i++) {
+	for(int i = 0; i < 21; i++) {
 
 		cout << "x=" << i << " : b=" << counts[i] << endl;
 
@@ -157,12 +160,12 @@ void printCounts(int * intArray) {
 
 }
 
-int getLargestSlotIndex(int * intArray) {
+int getLargestSlotIndex(int intArray[], int arraySize) {
 
 	int max = intArray[0];
 	int indexMax = 0;
 
-	for(int i = 1; i < intArray.size(); i++) {
+	for(int i = 1; i < arraySize; i++) {
 
 		if(intArray[i] > max) {
 

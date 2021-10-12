@@ -13,9 +13,15 @@ string table[2][3] = {};
 int main(int argc, char *argv[])
 {
 	//To read the file containing p and c values
+	string getP, getC;
 	ifstream pAndC(argv[1]);
-	pAndC >> p;
-	pAndC >> c;
+	getline(pAndC,getP);
+	p = stoi(getP);
+	cout << "Printing p: " << p << endl;
+	getline(pAndC,getC);
+	c = stoi(getC);
+	cout << "Printing c: " << c << endl;
+
 	pAndC.close();
 
 
@@ -71,7 +77,7 @@ int main(int argc, char *argv[])
 	{
 		//Looks through the hashtable for the word
 		string query = "";
-		ifstream queryFile argv[3];
+		ifstream queryFile(argv[3]);
 		while(queryFile)
 		{
 			getline(queryFile, query);

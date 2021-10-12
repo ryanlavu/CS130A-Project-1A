@@ -12,6 +12,13 @@ string table[2][3] = {};
 
 int main(int argc, char *argv[])
 {
+	//To read the file containing p and c values
+	ifstream pAndC(argv[1]);
+	pAndC >> p;
+	pAndC >> c;
+	pAndC.close();
+
+
 	ifstream wordBase(argv[2]);
 
 	string fileName;
@@ -57,6 +64,23 @@ int main(int argc, char *argv[])
 	}
 
 	wordBase.close();
+
+
+	//checks if user inputs a query file
+	if(argc > 3)
+	{
+		//Looks through the hashtable for the word
+		string query = "";
+		ifstream queryFile argv[3];
+		while(queryFile)
+		{
+			getline(queryFile, query);
+			if(word.empty())
+				break;
+			
+			
+		}
+	}
 
 	
 	cout <<"This is the end!" << endl;

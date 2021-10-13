@@ -250,6 +250,7 @@ int main(int argc, char *argv[]) {
 	}
 
 	cout << endl;
+	cout << endl;
 
 	//checks if user inputs a query file
 	if(argc > 3)
@@ -261,12 +262,12 @@ int main(int argc, char *argv[]) {
 		while(queryFile)
 		{
 			getline(queryFile, query);
-			if(word.empty())
+			if(query.empty())
 				break;
 				
 			int index = stringToInt(query);
 			bool found;
-
+			
 			if(hashTable[index]) {
 
 				found = false;

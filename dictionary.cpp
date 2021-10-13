@@ -16,8 +16,12 @@ int stringToInt(string input) {
 
         for(int i = input.length() - 1; i > -1; i--) {
 		
-                output += ((int(input[i]) % p) + (((previous % p) * (c % p)) % p) % p);
-		previous = ((int(input[i]) % p) + (((previous % p) * (c % p)) % p) % p);
+                //output += ((int(input[i]) % p) + (((previous % p) * (c % p)) % p) % p);
+		//previous = ((int(input[i]) % p) + (((previous % p) * (c % p)) % p) % p);
+		//output = output % p;
+		
+		output = ((int(input[i]) % p) + (((previous % p) * (c % p)) % p) % p);
+		previous = ((int(input[i]) % p) + (((previous % p) * (c % p)) % p) %p);
 		output = output % p;
 
         }
@@ -54,11 +58,13 @@ int main(int argc, char *argv[]) {
 	//This is to read in the wordbase file and hash the words into a intArray, as wlel as counting how many unique words there are
 	if(wordBase)
 	{
-		intArray[stringToInt(word)] = intArray[stringToInt(word)]+1;
 		getline(wordBase, word);
-		wordVector.push_back(word);
-		totalWords++;
-		uniqueWords++;
+		if(!word.empty()) {
+			intArray[stringToInt(word)]++;
+			wordVector.push_back(word);
+			totalWords++;
+			uniqueWords++;
+		}
 	}
 	while(wordBase)
 	{
@@ -89,7 +95,7 @@ int main(int argc, char *argv[]) {
 	for(int i = 0; i < p; i++) {
 
 		if(intArray[i] > 0) {
-
+			
 			hashTable[i] = new string[intArray[i]];
 
 		}
@@ -125,9 +131,9 @@ int main(int argc, char *argv[]) {
 	int maxIndex = 0;
 
 	for(int i = 1; i < p; i++) {
-
+		
 		if(intArray[i] > max) {
-
+			
 			max = intArray[i];
 			maxIndex = i;
 
@@ -135,15 +141,16 @@ int main(int argc, char *argv[]) {
 
 	}
 
-	cout << "Maximum number of collisions in a hashbucket: " << max << endl;
+	if(max <= 0) max = 1;
+	cout << "Maximum number of collisions in a hashbucket: " << (max - 1) << endl;
 	
 	//Find amount of arrays with sizes zero through twenty and print
 	int sizeArray[21] = {0};
 	for(int i = 0; i < p; i++) {
-	
-		if(intArray[i - 1] < 20) {
-
-			sizeArray[intArray[i] - 1]++;
+		
+		if(intArray[i] < 20) {
+			
+			sizeArray[intArray[i]]++;
 
 		}
 
@@ -153,7 +160,7 @@ int main(int argc, char *argv[]) {
 
 	for(int i = 0; i < 21; i++) {
 
-		cout << "x=" << i << " : b=" << sizeArray[i - 1] << endl;
+		cout << "x=" << i << " : b=" << sizeArray[i] << endl;
 
 	}
 

@@ -10,6 +10,22 @@ int p;
 int c;
 string table[2][3] = {};
 
+int stringToInt(string input) {
+
+        int output;
+
+        for(int i = 0; i < input.length(); i++) {
+
+                output += (int(input.at(i)) * int(pow(c, i))) % p;
+
+        }
+
+        return output;
+
+}
+
+
+
 int main(int argc, char *argv[])
 {
 
@@ -39,16 +55,17 @@ int main(int argc, char *argv[])
 	int uniqueWords = 0;
 	string word = "";
 	bool trueOrFalse = true;
-
+	cout << stringToInt("asd")  << endl;
 	//This is to read in the wordbase file and hash the words into a intArray, as wlel as counting how many unique words there are
 	if(wordBase)
 	{
-		//intArray[stringToInt(word)] = intArray[stringToInt(word)]+1;
+		intArray[stringToInt(word)] = intArray[stringToInt(word)]+1;
 		getline(wordBase, word);
 		wordVector.push_back(word);
 		totalWords++;
 		uniqueWords++;
 		cout << word  << " if statement" << endl;
+		cout << intArray[0] << " if statement first line int" << endl;
 	}
 	while(wordBase)
 	{
@@ -65,7 +82,7 @@ int main(int argc, char *argv[])
                 }
                 if(trueOrFalse)
                 {
-                        //intArray[stringToInt(word)] = intArray[stringToInt(word)]+1;
+                        intArray[stringToInt(word)] = intArray[stringToInt(word)]+1;
                         wordVector.push_back(word);
 			uniqueWords++;
                 }
@@ -98,19 +115,6 @@ int main(int argc, char *argv[])
 	
 }
 
-int stringToInt(string input) {
-	
-	int output;
-
-	for(int i = 0; i < input.length(); i++) {
-
-		output += (int(input.at(i)) * int(pow(c, i))) % p;
-
-	}
-
-	return output;
-
-}
 
 void insert(string data, int intArray[]) {
 

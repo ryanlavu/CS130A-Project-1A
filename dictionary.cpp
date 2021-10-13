@@ -213,7 +213,7 @@ int main(int argc, char *argv[]) {
 
 			}
 
-			if(!found) cout << "Key \"" << query << "\" does not exist" << endl;
+			if(!found) cout << "Key \"" << query << "\" does not exist." << endl;
 			
 			
 		}

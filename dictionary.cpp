@@ -8,19 +8,19 @@ using namespace std;
 
 int p;
 int c;
-string table[2][3] = {};
 
 int stringToInt(string input) {
 
-        int output;
+        int output = 0;
+	int previous = 0;
 
-        for(int i = 0; i < input.length(); i++) {
-
-                output += (int(input.at(i)) * int(pow(c, i))) % p;
+        for(int i = input.length() - 1; i > -1; i--) {
+		
+                output += ((int(input[i]) % p) + (((previous % p) * (c % p)) % p) % p);
+		previous = ((int(input[i]) % p) + (((previous % p) * (c % p)) % p) % p);
+		output = output % p;
 
         }
-
-	output = output % p;
 
         return output;
 
@@ -37,8 +37,7 @@ int main(int argc, char *argv[]) {
 	c = stoi(getC);
 
 	pAndC.close();
-
-
+	
 	//create hashtable
 	string **hashTable = new string *[p];
 
@@ -101,12 +100,12 @@ int main(int argc, char *argv[]) {
 	for(int i = 0; i < wordVector.size(); i++) {
 	
 		int index = stringToInt(wordVector[i]);
-
+		
 		for(int j = 0; j < intArray[index]; j++) {
 
 
 			if(hashTable[index][j] == "") {	
-
+				
 				hashTable[index][j] = wordVector[i];
 				break;
 
@@ -142,7 +141,7 @@ int main(int argc, char *argv[]) {
 	int sizeArray[21] = {0};
 	for(int i = 0; i < p; i++) {
 	
-		if(intArray[i] < 20) {
+		if(intArray[i - 1] < 20) {
 
 			sizeArray[intArray[i] - 1]++;
 
@@ -154,7 +153,7 @@ int main(int argc, char *argv[]) {
 
 	for(int i = 0; i < 21; i++) {
 
-		cout << "x=" << i << " : b=" << sizeArray[i] << endl;
+		cout << "x=" << i << " : b=" << sizeArray[i - 1] << endl;
 
 	}
 

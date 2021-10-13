@@ -12,6 +12,7 @@ string table[2][3] = {};
 
 int main(int argc, char *argv[])
 {
+
 	//To read the file containing p and c values
 	string getP, getC;
 	ifstream pAndC(argv[1]);
@@ -23,6 +24,10 @@ int main(int argc, char *argv[])
 	cout << "Printing c: " << c << endl;
 
 	pAndC.close();
+
+
+	//create hashtable
+	string **hashTable = new string *[p];
 
 
 	ifstream wordBase(argv[2]);

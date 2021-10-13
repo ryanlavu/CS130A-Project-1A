@@ -24,98 +24,6 @@ int stringToInt(string input) {
 
 }
 
-
-
-int main(int argc, char *argv[])
-{
-
-	//To read the file containing p and c values
-	string getP, getC;
-	ifstream pAndC(argv[1]);
-	getline(pAndC,getP);
-	p = stoi(getP);
-	cout << "Printing p: " << p << endl;
-	getline(pAndC,getC);
-	c = stoi(getC);
-	cout << "Printing c: " << c << endl;
-
-	pAndC.close();
-
-
-	//create hashtable
-	string **hashTable = new string *[p];
-
-
-	ifstream wordBase(argv[2]);
-
-	string fileName;
-	vector<string> wordVector;
-	int intArray[p] = {0};
-	int totalWords = 0;
-	int uniqueWords = 0;
-	string word = "";
-	bool trueOrFalse = true;
-	cout << stringToInt("asd")  << endl;
-	//This is to read in the wordbase file and hash the words into a intArray, as wlel as counting how many unique words there are
-	if(wordBase)
-	{
-		intArray[stringToInt(word)] = intArray[stringToInt(word)]+1;
-		getline(wordBase, word);
-		wordVector.push_back(word);
-		totalWords++;
-		uniqueWords++;
-		cout << word  << " if statement" << endl;
-		cout << intArray[0] << " if statement first line int" << endl;
-	}
-	while(wordBase)
-	{
-		getline(wordBase, word);
-		if(word.empty())
-			break;
-
-		totalWords++;
-
-                for(int i = 0; i < wordVector.size(); i++)
-                {
-                        if(wordVector[i] == word)
-                                trueOrFalse = false;
-                }
-                if(trueOrFalse)
-                {
-                        intArray[stringToInt(word)] = intArray[stringToInt(word)]+1;
-                        wordVector.push_back(word);
-			uniqueWords++;
-                }
-                trueOrFalse = true;
-
-		cout << word << " for loop" << endl;
-	}
-
-	wordBase.close();
-
-
-	//checks if user inputs a query file
-	if(argc > 3)
-	{
-		//Looks through the hashtable for the word
-		string query = "";
-		ifstream queryFile(argv[3]);
-		while(queryFile)
-		{
-			getline(queryFile, query);
-			if(word.empty())
-				break;
-			
-			
-		}
-	}
-
-	
-	cout <<"This is the end!" << endl;
-	
-}
-
-
 void insert(string data, int intArray[]) {
 
 	int index = stringToInt(data);
@@ -218,3 +126,93 @@ int getLargestSlotIndex(int intArray[], int arraySize) {
 	return indexMax;
 
 }
+
+int main(int argc, char *argv[])
+{
+
+	//To read the file containing p and c values
+	string getP, getC;
+	ifstream pAndC(argv[1]);
+	getline(pAndC,getP);
+	p = stoi(getP);
+	cout << "Printing p: " << p << endl;
+	getline(pAndC,getC);
+	c = stoi(getC);
+	cout << "Printing c: " << c << endl;
+
+	pAndC.close();
+
+
+	//create hashtable
+	string **hashTable = new string *[p];
+
+
+	ifstream wordBase(argv[2]);
+
+	string fileName;
+	vector<string> wordVector;
+	int intArray[p] = {0};
+	int totalWords = 0;
+	int uniqueWords = 0;
+	string word = "";
+	bool trueOrFalse = true;
+	cout << stringToInt("asd")  << endl;
+	//This is to read in the wordbase file and hash the words into a intArray, as wlel as counting how many unique words there are
+	if(wordBase)
+	{
+		intArray[stringToInt(word)] = intArray[stringToInt(word)]+1;
+		getline(wordBase, word);
+		wordVector.push_back(word);
+		totalWords++;
+		uniqueWords++;
+		cout << word  << " if statement" << endl;
+		cout << intArray[0] << " if statement first line int" << endl;
+	}
+	while(wordBase)
+	{
+		getline(wordBase, word);
+		if(word.empty())
+			break;
+
+		totalWords++;
+
+                for(int i = 0; i < wordVector.size(); i++)
+                {
+                        if(wordVector[i] == word)
+                                trueOrFalse = false;
+                }
+                if(trueOrFalse)
+                {
+                        intArray[stringToInt(word)] = intArray[stringToInt(word)]+1;
+                        wordVector.push_back(word);
+			uniqueWords++;
+                }
+                trueOrFalse = true;
+
+		cout << word << " for loop" << endl;
+	}
+
+	wordBase.close();
+
+
+	//checks if user inputs a query file
+	if(argc > 3)
+	{
+		//Looks through the hashtable for the word
+		string query = "";
+		ifstream queryFile(argv[3]);
+		while(queryFile)
+		{
+			getline(queryFile, query);
+			if(word.empty())
+				break;
+			
+			
+		}
+	}
+
+	
+	cout <<"This is the end!" << endl;
+	
+}
+

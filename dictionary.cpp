@@ -190,7 +190,7 @@ int main(int argc, char *argv[]) {
 				break;
 				
 			int index = stringToInt(query);
-			bool found;
+			bool found = false;
 			
 			if(hashTable[index]) {
 
@@ -208,10 +208,11 @@ int main(int argc, char *argv[]) {
 
 				}
 
-				if(!found) cout << "Key \"" << query << "\" does not exist" << endl;
+				//if(!found) cout << "Key \"" << query << "\" does not exist" << endl;
 
 			}
 
+			if(!found) cout << "Key \"" << query << "\" does not exist" << endl;
 			
 			
 		}

@@ -200,7 +200,7 @@ int main(int argc, char *argv[]) {
 
 					if(hashTable[index][i].compare(query) == 0) {
 
-						cout << "Key \"" << query << "\" exists at (" << index << string(",") << i << ")" << endl;
+						cout << "Key \"" << query << "\" exists at (" << index << string(",") << i << ")." << endl;
 						found = true;
 						break;
 
@@ -208,7 +208,7 @@ int main(int argc, char *argv[]) {
 
 				}
 
-				if(!found) cout << "Key \"" << query << "\" does not exist" << endl;
+				if(!found) cout << "Key \"" << query << "\" does not exist." << endl;
 
 			}
 

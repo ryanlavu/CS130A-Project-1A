@@ -73,7 +73,7 @@ int main(int argc, char *argv[]) {
 			break;
 
 		totalWords++;
-
+		if(totalWords < 50)
                 for(int i = 0; i < wordVector.size(); i++)
                 {
                         if(wordVector[i] == word)

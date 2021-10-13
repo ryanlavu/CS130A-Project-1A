@@ -207,12 +207,9 @@ int main(int argc, char *argv[]) {
 					}
 
 				}
-
-<<<<<<< HEAD
+				
 				//if(!found) cout << "Key \"" << query << "\" does not exist" << endl;
-=======
-				if(!found) cout << "Key \"" << query << "\" does not exist." << endl;
->>>>>>> 0640a201d836eca3b01cdf126fda76455610b28d
+
 
 			}
 

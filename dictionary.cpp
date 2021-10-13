@@ -20,6 +20,8 @@ int stringToInt(string input) {
 
         }
 
+	output = output % p;
+
         return output;
 
 }
@@ -113,10 +115,8 @@ int main(int argc, char *argv[]) {
 	ifstream pAndC(argv[1]);
 	getline(pAndC,getP);
 	p = stoi(getP);
-	//cout << "Printing p: " << p << endl;
 	getline(pAndC,getC);
 	c = stoi(getC);
-	//cout << "Printing c: " << c << endl;
 
 	pAndC.close();
 
@@ -134,7 +134,6 @@ int main(int argc, char *argv[]) {
 	int uniqueWords = 0;
 	string word = "";
 	bool trueOrFalse = true;
-	cout << stringToInt("asd")  << endl;
 	//This is to read in the wordbase file and hash the words into a intArray, as wlel as counting how many unique words there are
 	if(wordBase)
 	{
@@ -143,8 +142,6 @@ int main(int argc, char *argv[]) {
 		wordVector.push_back(word);
 		totalWords++;
 		uniqueWords++;
-		//cout << word  << " if statement" << endl;
-		//cout << intArray[0] << " if statement first line int" << endl;
 	}
 	while(wordBase)
 	{
@@ -161,19 +158,17 @@ int main(int argc, char *argv[]) {
                 }
                 if(trueOrFalse)
                 {
-                        intArray[stringToInt(word)] = intArray[stringToInt(word)]+1;
+                        intArray[stringToInt(word)]++;
                         wordVector.push_back(word);
 			uniqueWords++;
                 }
                 trueOrFalse = true;
 
-		cout << word << " for loop" << endl;
 	}
 
 	wordBase.close();
 
 	//Initializes the string arrays within the hashtable to the right size and if it is zero it is null
-	cout << "initialize the string arrays" << endl;
 	for(int i = 0; i < p; i++) {
 
 		if(intArray[i] > 0) {
@@ -185,16 +180,17 @@ int main(int argc, char *argv[]) {
 	}
 	
 	//Inputs all the strings from wordVector into the hashtable
-	cout << "strings from wordVector into hashTable" << endl;
 	for(int i = 0; i < wordVector.size(); i++) {
 	
 		int index = stringToInt(wordVector[i]);
 
-		for(int i = 0; i < intArray[index]; i++) {
+		for(int j = 0; j < intArray[index]; j++) {
 
-			if(hashTable[index][i] == "") {
 
-				table[index][i] = wordVector[i];
+			if(hashTable[index][j] == "") {	
+
+				hashTable[index][j] = wordVector[i];
+				break;
 
 			}
 
@@ -228,9 +224,9 @@ int main(int argc, char *argv[]) {
 	int sizeArray[21] = {0};
 	for(int i = 0; i < p; i++) {
 	
-		if(intArray[i] > 20) {
+		if(intArray[i] < 20) {
 
-			sizeArray[intArray[i]]++;
+			sizeArray[intArray[i] - 1]++;
 
 		}
 
@@ -249,9 +245,11 @@ int main(int argc, char *argv[]) {
 
 	for(int i = 0; i < intArray[maxIndex]; i++) {
 
-		cout << " " << hashTable[maxIndex][i] << endl;
+		cout << " " << hashTable[maxIndex][i];
 
 	}
+
+	cout << endl;
 
 	//checks if user inputs a query file
 	if(argc > 3)
@@ -259,18 +257,40 @@ int main(int argc, char *argv[]) {
 		//Looks through the hashtable for the word
 		string query = "";
 		ifstream queryFile(argv[3]);
+		cout << "Queries" << endl;
 		while(queryFile)
 		{
 			getline(queryFile, query);
 			if(word.empty())
 				break;
+				
+			int index = stringToInt(query);
+			bool found;
+
+			if(hashTable[index]) {
+
+				found = false;
+
+				for(int i = 0; i < intArray[index]; i++) {
+
+					if(hashTable[index][i].compare(query) == 0) {
+
+						cout << "Key \"" << query << "\" exists at (" << index << string(",") << i << ")" << endl;
+						found = true;
+						break;
+
+					}
+
+				}
+
+				if(!found) cout << "Key \"" << query << "\" does not exist" << endl;
+
+			}
+
 			
 			
 		}
 	}
-
-	
-	cout <<"This is the end!" << endl;
 	
 }
 

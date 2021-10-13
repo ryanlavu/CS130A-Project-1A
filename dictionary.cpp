@@ -9,10 +9,10 @@ using namespace std;
 int p;
 int c;
 
-int stringToInt(string input) {
+long int stringToInt(string input) {
 
-        int output = 0;
-	int previous = 0;
+        long int output = 0;
+	long int previous = 0;
 
         for(int i = input.length() - 1; i > -1; i--) {
 		
